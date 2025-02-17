@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const sectionList = document.getElementById("section-list1");
-    const API_BASE_URL = 'http://localhost:4000';
+    const API_BASE_URL = 'https://backend-cha-casa-nova.vercel.app';
 
     const gifts = [
         { 
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function updateContributionTotal(giftId, price) {
     try {
-        const response = await fetch(`http://localhost:4000/api/contributions/${giftId}`);
+        const response = await fetch(`${API_BASE_URL}/api/contributions/${giftId}`);
         const data = await response.json();
 
         if (response.ok) {
