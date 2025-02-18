@@ -1,6 +1,13 @@
+console.log("list.js carregado!");
+console.log("API_BASE_URL:", typeof API_BASE_URL !== "undefined" ? API_BASE_URL : "NÃO DEFINIDO");
+
+const API_BASE_URL = "https://backend-cha-casa-nova.onrender.com/api"; // Defina diretamente no list.js
+
+console.log("API_BASE_URL:", API_BASE_URL); // Teste se está definido
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const sectionList = document.getElementById("section-list1");
-    const API_BASE_URL = 'https://backend-cha-casa-nova.onrender.com';
 
     const gifts = [
         { 
@@ -143,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             try {
-                const response = await fetch(`${API_BASE_URL}/api/contribute`, {
+                const response = await fetch(`${API_BASE_URL}/contribute`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ giftId, amount: valorPix }),
