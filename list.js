@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const sectionList = document.getElementById("section-list1");
-    const API_BASE_URL = 'https://backend-cha-casa-nova.vercel.app';
+    const API_BASE_URL = 'https://backend-cha-casa-nova.onrender.com';
 
     const gifts = [
         { 
