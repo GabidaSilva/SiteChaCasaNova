@@ -1,8 +1,3 @@
-console.log("list.js carregado!");
-console.log("API_BASE_URL:", typeof API_BASE_URL !== "undefined" ? API_BASE_URL : "NÃO DEFINIDO");
-
-const API_BASE_URL = "https://backend-cha-casa-nova.onrender.com/api"; // Defina diretamente no list.js
-
 console.log("API_BASE_URL:", API_BASE_URL); // Teste se está definido
 
 
