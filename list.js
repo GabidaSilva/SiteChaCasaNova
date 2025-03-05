@@ -34,12 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const valorPix = parseFloat(inputValue);
 
             if (!valorPix || valorPix < 100) {
-                alert("Por favor, insira um valor válido para contribuir (mínimo R$100,00).");
+                alert("Por favor, insira um valor válido para contribuir (mínimo R$100,00)."
+                );
                 return;
             }
 
             try {
-                const response = await fetch(`${API_BASE_URL}/api/contribute`, { // Corrigida URL
+                const response = await fetch(`${API_BASE_URL}/api/contribute`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ giftId, amount: valorPix }),
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert(data.message || "Erro ao registrar a contribuição.");
                 }
             } catch (error) {
-                console.error('Erro:', error);
+                console.error("Erro ao processar a contribuição:", error);
                 alert("Ocorreu um erro ao processar a contribuição.");
             }
         });
@@ -65,14 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
 async function updateContributionTotal(giftId, price) {
     try {
         const response = await fetch(`${API_BASE_URL}/api/contributions/${giftId}`);
+        if (!response.ok) throw new Error("Erro ao buscar contribuições");
+        
         const data = await response.json();
-
-        if (response.ok) {
-            document.getElementById(`coletado-${giftId}`).textContent = `Coletado: R$${data.total.toFixed(2)}`;
-            document.getElementById(`falta-${giftId}`).textContent = `Falta: R$${Math.max(0, price - data.total).toFixed(2)}`;
-        } else {
-            console.error("Erro ao atualizar valores:", data.message);
-        }
+        document.getElementById(`coletado-${giftId}`).textContent = `Coletado: R$${data.total.toFixed(2)}`;
+        document.getElementById(`falta-${giftId}`).textContent = `Falta: R$${Math.max(0, price - data.total).toFixed(2)}`;
     } catch (error) {
         console.error("Erro ao buscar contribuições:", error);
     }
